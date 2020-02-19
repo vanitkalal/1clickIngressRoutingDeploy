@@ -40,7 +40,7 @@ firewall = ec2.create_instances(
     MinCount=1,
     MaxCount=1,
     InstanceType='c3.2xlarge',
-    KeyName='SYD',
+    KeyName='YourKey',
     SubnetId=PUBsubnet.id
 )
 
