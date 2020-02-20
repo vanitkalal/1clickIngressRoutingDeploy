@@ -66,6 +66,13 @@ print(route2)
 route3 = ec2.Route(GWroutetable.id, '10.0.0.0/16')
 route3.replace(NetworkInterfaceId=str(network_interface.id))
 
+# Allocate an elastic IP to management interface
+eip2 = ec2client.allocate_address(Domain='vpc')
+# Associate the elastic IP address with the instance launched above
+ec2client.associate_address(
+     InstanceId=temp.id,
+     AllocationId=eip2["AllocationId"])
+
 # Allocate an elastic IP
 eip = ec2client.allocate_address(Domain='vpc')
 # Associate the elastic IP address with the instance launched above
